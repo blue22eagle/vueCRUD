@@ -1,0 +1,23 @@
+body {
+    background: linear-gradient(limegreen, transparent), linear-gradient(90deg, skyblue, transparent), linear-gradient(-90deg, coral, transparent);
+    background-blend-mode: screen;
+  }
+  
+  div:first-child {
+    margin: 20px 0;
+  }
+  div:first-child table:first-of-type {
+    margin: 15px 2px;
+    background: #ffffff !important;
+  }
+  div:first-child table:last-of-type {
+    margin: 15px 2px;
+    background: #fdfdef !important;
+  }
+  div:first-child .head {
+    text-align: center;
+    margin: 45px 35px;
+  }
+  div:first-child .img-container {
+    text-align: center;
+  }
