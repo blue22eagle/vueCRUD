@@ -1,8 +1,14 @@
 new Vue({
     el: '#app',
     data: {
-      columns: ['Index', 'Last Name', 'First Name', 'Age', 'Job', 'Address', 'Actions'],
-      persons: [{
+        columns: ['_Id', 'Id', 'Last Name', 'First Name', 'Birth day', 'Age'],
+        persons: [],
+    },
+    /*data: {
+      columns: ['_Id', 'Id', 'Last Name', 'First Name', 'Birth day', 'Age'],
+      persons: null,
+      _columns: ['Index', 'Last Name', 'First Name', 'Age', 'Job', 'Address', 'Actions'],
+      _persons: [{
         lname: "ADIASSA",
         fname: "Ethiel",
         age: 20,
@@ -60,12 +66,23 @@ new Vue({
         job: "",
         address: ""
       }
-    },
-    /*beforeMount() {
-        //this.$nextTick(this.persons.sort(ordonner))
-        this.persons.sort(ordonner)
-        alert("I'm mouted")
     },*/
+    mounted: function() {
+      axios.get('/api/read')
+           .then(function(response) {
+               if (response.status= 200) {
+                   this.persons= response.data;
+                   console.log(response.data);
+               } 
+               else
+                    console.log('error');
+           })
+           .catch(function(error) {
+                console.log(error);
+           });
+           //.then(response=> (this.persons= response))
+           //.catch(error=> (console.log(error))
+    },
     methods: {
       //function to add data to table
       add: function() {
@@ -129,14 +146,14 @@ new Vue({
             })
         }
     }
-  });
+});
   
-  //function to sort table data alphabetically
-  var ordonner = function(a, b) {
+//function to sort table data alphabetically
+var ordonner = function(a, b) {
     return (a.age > b.age);
-  };
-  
-  $(function() {
+};
+
+$(function() {
     //initialize modal box with jquery
     $('.modal').modal();
-  });
+});
