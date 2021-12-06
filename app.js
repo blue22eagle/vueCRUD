@@ -88,14 +88,14 @@ new Vue({
       }
     },*/
     created() {
-      let $vm= this;
+      //let $vm= this;
       alert(JSON.stringify($vm.persons));
       axios.get('/api/read')
            .then(function(response) {
                if (response.status= 200) {
-                   $vm.persons= response.data;
+                   this.this.persons= response.data;
                    console.log(persons);
-                   alert(JSON.stringify($vm.persons));
+                   alert(JSON.stringify(this.this.persons));
                } 
                else
                     console.log('error');
