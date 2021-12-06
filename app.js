@@ -1,14 +1,34 @@
 new Vue({
     el: '#app',
     data: {
-        columns: ['_Id', 'Id', 'Last Name', 'First Name', 'Birth day', 'Age'],
-        persons: [],
-    },
+        columns: ['Id', 'Last Name', 'First Name', 'Birth day', 'Age'],
+        persons: null,
+        bin: [],
+        input: {
+          lname: "WADE",
+          fname: "Johnson",
+          age: 38,
+          job: "Comedian",
+          address: "Roma/Italia"
+        },
+        editInput: {
+          lname: "",
+          fname: "",
+          age: 0,
+          job: "",
+          address: ""
+        }
+      },
     /*data: {
-      columns: ['_Id', 'Id', 'Last Name', 'First Name', 'Birth day', 'Age'],
-      persons: null,
-      _columns: ['Index', 'Last Name', 'First Name', 'Age', 'Job', 'Address', 'Actions'],
-      _persons: [{
+        columns: ['Id', 'Last Name', 'First Name', 'Birth day', 'Age'],
+        persons: [
+            {id : 1, LName : "ZEBIDA", FName : "Youcef", BirthDay : "2009/11/19", Age : 11 },
+            {id : 2, LName : "ZEBIDA", FName : "Younes", BirthDay : "2011/08/08", Age : 9 },
+            {id : 3, LName : "ZEBIDA", FName : "Mohamed", BirthDay : "2018/10/21", Age : 2, Test : "test"},
+            {id: 4, "Budget" : 5000000 }
+        ],*/
+      /*columns: ['Index', 'Last Name', 'First Name', 'Age', 'Job', 'Address', 'Actions'],
+      persons: [{
         lname: "ADIASSA",
         fname: "Ethiel",
         age: 20,
@@ -67,12 +87,15 @@ new Vue({
         address: ""
       }
     },*/
-    mounted: function() {
+    created() {
+      let $vm= this;
+      alert(JSON.stringify($vm.persons));
       axios.get('/api/read')
            .then(function(response) {
                if (response.status= 200) {
-                   this.persons= response.data;
-                   console.log(response.data);
+                   $vm.persons= response.data;
+                   console.log(persons);
+                   alert(JSON.stringify($vm.persons));
                } 
                else
                     console.log('error');
@@ -82,6 +105,9 @@ new Vue({
            });
            //.then(response=> (this.persons= response))
            //.catch(error=> (console.log(error))
+    },
+    mounted() {
+        alert(JSON.stringify(this.persons));
     },
     methods: {
       //function to add data to table

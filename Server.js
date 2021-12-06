@@ -1,6 +1,7 @@
 //					بسم الله الرحمن الرحيم
 
 //const MongoClient = require('mongodb');
+
 const	node_path= "../../node-v16.13.0/node_modules/",		//'/usr/local/lib/node_modules/',
         express= require(node_path+ 'express'),
         app= express(),
@@ -37,7 +38,7 @@ MongoClient.connect(url, function(err, connection) {
 	.use(cookieParser("mysecret"))
 	.get('/', (req, res)=> res.render('index.html'))
 	.get('/api/read', (req, res)=> {
-		db.collection('myCollection').find({}).toArray(function(err, result) {
+		db.collection('myCollection').find({}, {_id: 0, LName: 1, FName: 1, BirthDay: 1, Age: 1}).toArray(function(err, result) {
 			if (err) throw err;
 			res.json(result);
 		});

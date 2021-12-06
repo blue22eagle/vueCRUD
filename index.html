@@ -28,10 +28,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(person,index) in sortedPersons" :key="person.lname">   <!-- v-bind:key="person.age" -->
-                <td>{{index}}</td>
-                <td v-for="myval in person">
-                {{myval}}
+            <tr v-for="(person,index) in sortedPersons" :key="person.id">   <!-- v-bind:key="person.age" -->
+                <!--<td>{{index}}</td>-->
+                <td v-for="(myval, mykey) in person">
+                <div v-show="mykey!=='_id'">{{myval}}</div>
                 </td>
                 <td style="width: 18%;">
                 <a href="#modal" @click="edit(index)" class="btn waves-effect waves-light yellow darken-2"><i class="material-icons">edit</i>
