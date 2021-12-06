@@ -87,28 +87,20 @@ new Vue({
         address: ""
       }
     },*/
-    created() {
-      //let $vm= this;
-      alert(JSON.stringify($vm.persons));
-      axios.get('/api/read')
-           .then(function(response) {
-               if (response.status= 200) {
-                   this.this.persons= response.data;
-                   console.log(persons);
-                   alert(JSON.stringify(this.this.persons));
-               } 
-               else
-                    console.log('error');
-           })
-           .catch(function(error) {
-                console.log(error);
-           });
-           //.then(response=> (this.persons= response))
-           //.catch(error=> (console.log(error))
-    },
     mounted() {
-        alert(JSON.stringify(this.persons));
-    },
+        axios.get('/api/read')
+             .then(response=> {
+                 if (response.status= 200)
+                     this.persons= response.data;
+                 else
+                      console.log('error');
+             })
+             .catch(function(error) {
+                  console.log(error);
+             })
+             /*.then(response=> (this.persons= response.data))
+             .catch(error=> (console.log(error)))*/
+      },
     methods: {
       //function to add data to table
       add: function() {
