@@ -38,7 +38,7 @@ MongoClient.connect(url, function(err, connection) {
 	.use(cookieParser("mysecret"))
 	.get('/', (req, res)=> res.render('index.html'))
 	.get('/api/read', (req, res)=> {
-        db.collection('myCollection').find({}).project({_id: 0}).sort({id: -1}).toArray(function(err, result) {
+        db.collection('myCollection').find().project({_id: 0}).sort({id: 1}).toArray(function(err, result) {
 			if (err) throw err;
 			res.json(result);
 		});
