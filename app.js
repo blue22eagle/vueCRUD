@@ -4,19 +4,19 @@ new Vue({
         columns: ['Id', 'Last Name', 'First Name', 'Birth day', 'Age'],
         persons: null,
         bin: [],
-        input: {
+        /*input: {
           lname: "WADE",
           fname: "Johnson",
           age: 38,
           job: "Comedian",
           address: "Roma/Italia"
-        },
+        },*/
         editInput: {
-          lname: "",
-          fname: "",
-          age: 0,
-          job: "",
-          address: ""
+            id: "",
+            LName: "",
+            FName: "",
+            BirthDay: "",
+            Age: "",
         }
       },
     mounted() {
@@ -34,11 +34,11 @@ new Vue({
       //function to add data to table
       add: function() {
         this.persons.push({
-          lname: this.input.lname,
-          fname: this.input.fname,
-          age: this.input.age,
-          job: this.input.job,
-          address: this.input.address
+          id: this.input.id,
+          LName: this.input.LName,
+          FName: this.input.FName,
+          BirthDay: this.input.BirthDay,
+          Age: this.input.Age
         });
   
         for (var key in this.input) {
@@ -69,11 +69,11 @@ new Vue({
       update: function(){
         // this.persons.push(this.editInput);
          this.persons.push({
-          lname: this.editInput.lname,
-          fname: this.editInput.fname,
-          age: this.editInput.age,
-          job: this.editInput.job,
-          address: this.editInput.address
+          id: this.editInput.id,
+          LName: this.editInput.LName,
+          FName: this.editInput.FName,
+          BirthDay: this.editInput.BirthDay,
+          Age: this.editInput.Age
         });
          for (var key in this.editInput) {
           this.editInput[key] = '';
